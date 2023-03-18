@@ -1,0 +1,31 @@
+{
+  "name": "number-searcher",
+  "version": "1.0.0",
+  "description": "A website where anyone can find numbers of workers like mechanic, carpenter and plumber etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "prettier": "npx prettier --write \"**/*.js\"",
+    "test-cases": "mocha ./tests/index.js --exit --timeout 30000"
+  },
+  "author": "Aman Agarwal",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "express-swagger-generator": "^1.1.17",
+    "joi": "^17.8.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.29.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0"
+  }
+}
