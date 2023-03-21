@@ -1,6 +1,12 @@
 A website where anyone can find numbers of workers like mechanic, carpenter and plumber etc.
 
-Modules - 
+Modules -
+
 1. Worker profile
 2. Admin flow
-3. User login and signup flow
+
+TODO -
+
+1. search suggestions / auto complete search
+2. pagination
+3. admin flow

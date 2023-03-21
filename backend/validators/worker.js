@@ -7,6 +7,7 @@ const workerValidator = {
         Joi.object({
           name: Joi.string().required(),
           profession: Joi.string().required(),
+          number: Joi.string().required(),
           PictureId: Joi.string().allow()
         })
       )

@@ -1,37 +1,41 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
-let Worker = DATABASE.define("workers", {
+let Worker = DATABASE.define('workers', {
   id: {
     type: Sequelize.UUID,
     primaryKey: true,
-    defaultValue: Sequelize.UUIDV4,
+    defaultValue: Sequelize.UUIDV4
   },
   name: {
     type: Sequelize.CHAR(50),
-    allowNull: false,
+    allowNull: false
   },
   profession: {
     type: Sequelize.CHAR(100),
-    allowNull: false,
+    allowNull: false
+  },
+  number: {
+    type: Sequelize.CHAR(30),
+    allowNull: false
   },
   PictureId: {
     type: Sequelize.UUID,
     allowNull: false,
     references: {
-      model: "medias",
-      key: "id",
-    },
+      model: 'medias',
+      key: 'id'
+    }
   },
   isActive: {
     type: Sequelize.BOOLEAN,
-    defaultValue: true,
+    defaultValue: true
   },
   createdAt: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
-    type: Sequelize.DATE,
-  },
+    type: Sequelize.DATE
+  }
 });
 
 module.exports = Worker;

@@ -1,11 +1,14 @@
 import Card from './components/Card';
 import Navbar from './components/Navbar';
+import WorkersState from './context/WorkersState';
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Card />
+      <WorkersState>
+        <Navbar />
+        <Card />
+      </WorkersState>
     </>
   );
 }

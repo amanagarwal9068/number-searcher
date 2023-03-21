@@ -38,11 +38,14 @@ exports.list = async (req, res) => {
     let workersOpts = {
       where: {},
       include: { model: Media, as: 'Picture' },
+      order: Sequelize.literal('rand()'), // for testing purpose only
       offset: 0,
       limit: 50
     };
     if (requestBody.name) {
-      workersOpts.where.name = { [Sequelize.Op.like]: `%${requestBody.name}%` };
+      workersOpts.where.name = {
+        [Sequelize.Op.like]: `%${requestBody.name}%`
+      };
     }
     if (requestBody.profession) {
       workersOpts.where.profession = {

@@ -1,11 +1,12 @@
-const Router = require("express").Router();
+const Router = require('express').Router();
 
-const workerController = require("../controllers/worker");
+const workerController = require('../controllers/worker');
 
 /**
  * @typedef WorkerAdd
  * @property {string} name - - eg: John Doe
  * @property {string} profession - - eg: Mechanic
+ * @property {string} number - - eg: +123 456789
  * @property {string} PictureId - - eg: 31319d55-b399-410e-8d3a-e162a0825dc6
  */
 /**
@@ -13,6 +14,7 @@ const workerController = require("../controllers/worker");
  * @property {integer} id - - eg: 19
  * @property {string} name - - eg: John Doe
  * @property {string} profession - - eg: Mechanic
+ * @property {string} number - - eg: +123 456789
  * @property {string} PictureId - - eg: 31319d55-b399-410e-8d3a-e162a0825dc6
  * @property {boolean} isActive - - eg: true
  * @property {string} createdAt - - eg: 2022-10-20T07:33:36.000Z
@@ -31,7 +33,7 @@ const workerController = require("../controllers/worker");
  * @produces application/json
  * @consumes application/json
  */
-Router.post("/add", workerController.add);
+Router.post('/add', workerController.add);
 
 /**
  * @typedef WorkerListResponse
@@ -51,6 +53,6 @@ Router.post("/add", workerController.add);
  * @produces application/json
  * @consumes application/json
  */
-Router.get("/list", workerController.list);
+Router.get('/list', workerController.list);
 
 module.exports = Router;

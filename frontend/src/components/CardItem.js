@@ -10,7 +10,9 @@ const CardItem = (props) => {
               : props.worker.name.slice(0, 12) + '...'}
           </h5>
           <p className='card-text'>{props.worker.profession}</p>
-          <i className='fa-solid fa-phone' style={{ color: '#075ef2' }}></i>
+          <a href={`tel:${props.worker.number}`}>
+            <i className='fa-solid fa-phone' style={{ color: '#075ef2' }}></i>
+          </a>
         </div>
       </div>
     </>

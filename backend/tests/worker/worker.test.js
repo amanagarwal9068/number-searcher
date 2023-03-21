@@ -30,6 +30,7 @@ describe('Worker', () => {
         workers.push({
           name: faker.name.fullName(),
           profession: faker.helpers.arrayElement(professions),
+          number: faker.phone.number(),
           PictureId: mediaId
         });
       });
