@@ -17,8 +17,10 @@ const path = require('path');
 const morgan = require('morgan');
 const expressSwaggerGenerator = require('express-swagger-generator');
 const fs = require('fs');
+const cors = require('cors');
 
 // Attaching media files
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 // API call logs
