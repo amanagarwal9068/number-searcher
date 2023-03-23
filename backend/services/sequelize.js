@@ -13,6 +13,10 @@ module.exports = getSqlConnection = () => {
       charset: config.DATABASE.CHARSET,
       collate: config.DATABASE.COLLATE,
       freezeTableName: true,
+      dialectOptions: {
+        ssl: true,
+        native: true
+      },
       hooks: {
         beforeCreate(rec, opts) {
           let creationDate = new Date();

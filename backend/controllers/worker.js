@@ -3,7 +3,8 @@ const Media = require('../models/media');
 const workerValidator = require('../validators/worker');
 const { validateRequestInput } = require('../services/joi');
 const constants = require('../utils/constants');
-const { Sequelize } = require('sequelize');
+const Sequelize=require('sequelize')
+const sequelize=require('../services/sequelize')()
 
 exports.add = async (req, res) => {
   try {
@@ -38,7 +39,7 @@ exports.list = async (req, res) => {
     let workersOpts = {
       where: {},
       include: { model: Media, as: 'Picture' },
-      order: Sequelize.literal('rand()'), // for testing purpose only
+      order: sequelize.random(), // for testing purpose only
       offset: 0,
       limit: 50
     };
