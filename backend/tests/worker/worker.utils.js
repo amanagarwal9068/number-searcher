@@ -3,11 +3,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-exports.add = async (payload) => {
+exports.add = async (payload, authToken) => {
   try {
     let res = await chai
       .request(config.baseUrl)
       .post('worker/add')
+      .set({ Authorization: `Bearer ${authToken}` })
       .send(payload);
     return res;
   } catch (e) {

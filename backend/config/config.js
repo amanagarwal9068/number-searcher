@@ -12,6 +12,17 @@ module.exports = {
   },
   SERVER_PORT: process.env.SERVER_PORT,
   DOMAIN_URL: process.env.DOMAIN_URL,
+
   SWAGGER_TITLE: process.env.SWAGGER_TITLE,
-  SWAGGER_DOMAIN_URL: process.env.SWAGGER_DOMAIN_URL
+  SWAGGER_DOMAIN_URL: process.env.SWAGGER_DOMAIN_URL,
+
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+
+  ADMIN_NAME: process.env.ADMIN_NAME,
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+
+  SALT_ROUNDS: parseInt(process.env.SALT_ROUNDS),
+
+  VALID_AUTH_TYPES: ['admin']
 };

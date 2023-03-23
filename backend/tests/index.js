@@ -12,5 +12,6 @@ beforeEach(async () => {
 });
 
 // running test cases serially
+require('./admin/admin.test');
 require('./media/media.test');
 require('./worker/worker.test');

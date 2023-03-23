@@ -18,6 +18,7 @@ const morgan = require('morgan');
 const expressSwaggerGenerator = require('express-swagger-generator');
 const fs = require('fs');
 const cors = require('cors');
+const { createAdmin } = require('./config/start.js');
 
 // Attaching media files
 app.use(cors());
@@ -27,8 +28,10 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(morgan('tiny'));
 
 app.use(express.json());
+
 app.use('/api/worker', require('./routers/worker'));
 app.use('/api/media', require('./routers/media'));
+app.use('/api/admin', require('./routers/admin'));
 
 // Creating uploads folder for media files
 if (!fs.existsSync('./uploads')) {
@@ -58,6 +61,9 @@ const options = {
   files: ['./routers/*.js']
 };
 expressSwaggerGenerator(app)(options);
+
+// Creating admin first time if does not exist
+createAdmin();
 
 app.listen(process.env.SERVER_PORT, () => {
   console.log(`Server is listening at ${process.env.SERVER_PORT}`);

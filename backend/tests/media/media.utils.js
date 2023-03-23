@@ -3,9 +3,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-exports.add = async (payload) => {
+exports.add = async (payload, authToken) => {
   try {
-    let res = chai.request(config.baseUrl).post('media/add');
+    let res = chai
+      .request(config.baseUrl)
+      .post('media/add')
+      .set({ Authorization: `Bearer ${authToken}` });
     if (payload.files && payload.files.length) {
       res.field('files', JSON.stringify(payload.files));
     }

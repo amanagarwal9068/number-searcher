@@ -1,7 +1,8 @@
-const Router = require("express").Router();
+const Router = require('express').Router();
 
-const multer = require("../services/multer");
-const mediaController = require("../controllers/media");
+const multer = require('../services/multer');
+const mediaController = require('../controllers/media');
+const { verifyToken } = require('../middlewares/auth');
 
 /**
  * @typedef MediaAdd
@@ -10,7 +11,7 @@ const mediaController = require("../controllers/media");
 /**
  * @typedef MediaData
  * @property {integer} id - - eg: 19
- * @property {string} url - - eg: localhost:3000/images/dc377a441cea4f9a9f02230f698e35ba.jpg
+ * @property {string} url - - eg: http://localhost:3000/images/dc377a441cea4f9a9f02230f698e35ba.jpg
  * @property {string} type - - eg: image/jpeg
  * @property {string} createdAt - - eg: 2022-10-20T07:33:36.000Z
  * @property {string} updatedAt - - eg: 2022-10-20T07:33:36.000Z
@@ -29,6 +30,11 @@ const mediaController = require("../controllers/media");
  * @produces application/json
  * @consumes multipart/form-data
  */
-Router.post("/add", multer.array("medias"), mediaController.add);
+Router.post(
+  '/add',
+  verifyToken('admin'),
+  multer.array('medias'),
+  mediaController.add
+);
 
 module.exports = Router;

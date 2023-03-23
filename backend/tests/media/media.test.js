@@ -1,8 +1,22 @@
+const config = require('../config');
 const { expect } = require('chai');
 const { faker } = require('@faker-js/faker');
 const mediaUtils = require('./media.utils');
+const adminUtils = require('../admin/admin.utils');
 
-before(async () => {});
+let adminToken;
+
+before(async () => {
+  let adminRes = await adminUtils.login({
+    email: config.adminCredentials.email,
+    password: config.adminCredentials.password
+  });
+  console.log(adminRes.body);
+  console.log(adminRes.error.text);
+  expect(adminRes.status).to.eq(200);
+  expect(adminRes.body.success).to.eq(true);
+  adminToken = adminRes.body.data;
+});
 
 describe('Media', () => {
   describe('Add media', () => {
@@ -17,7 +31,7 @@ describe('Media', () => {
           }
         ]
       };
-      let res = await mediaUtils.add(payload);
+      let res = await mediaUtils.add(payload, adminToken);
       console.log(res.body);
       expect(res.status).to.eq(200);
       expect(res.body.success).to.eq(true);
@@ -29,7 +43,7 @@ describe('Media', () => {
     });
 
     it('No media files are uploaded', async () => {
-      let res = await mediaUtils.add({ filePaths: [] });
+      let res = await mediaUtils.add({ filePaths: [] }, adminToken);
       console.log(res.body);
       expect(res.status).to.eq(400);
       expect(res.body.success).to.eq(false);

@@ -1,6 +1,7 @@
 const Router = require('express').Router();
 
 const workerController = require('../controllers/worker');
+const { verifyToken } = require('../middlewares/auth');
 
 /**
  * @typedef WorkerAdd
@@ -8,6 +9,10 @@ const workerController = require('../controllers/worker');
  * @property {string} profession - - eg: Mechanic
  * @property {string} number - - eg: +123 456789
  * @property {string} PictureId - - eg: 31319d55-b399-410e-8d3a-e162a0825dc6
+ */
+/**
+ * @typedef WorkerAddBody
+ * @property {Array<WorkerAdd>} workers
  */
 /**
  * @typedef WorkerData
@@ -28,12 +33,13 @@ const workerController = require('../controllers/worker');
 /**
  * @route POST /worker/add
  * @group Worker
- * @param {WorkerAdd.model} data.body - Worker data
+ * @security JWT
+ * @param {WorkerAddBody.model} data.body - Worker data
  * @returns {WorkerAddResponse.model} 200
  * @produces application/json
  * @consumes application/json
  */
-Router.post('/add', workerController.add);
+Router.post('/add', verifyToken('admin'), workerController.add);
 
 /**
  * @typedef WorkerListResponse

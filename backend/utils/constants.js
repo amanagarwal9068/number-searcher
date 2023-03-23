@@ -1,8 +1,16 @@
 module.exports = {
   MESSAGES: {
     MEDIA: {
-      NO_MEDIA_FILES_ARE_UPLOADED: "No media files are uploaded",
+      NO_MEDIA_FILES_ARE_UPLOADED: 'No media files are uploaded'
     },
+    ADMIN: {
+      NOT_FOUND: 'Email not found.',
+      WRONG_PASSWORD: 'Wrong password.'
+    },
+    AUTH: {
+      INVALID: 'Invalid auth type.',
+      UNAUTHORIZED: 'Unauthorized.'
+    }
   },
   CODES: {
     SUCCESS: 200,
@@ -13,6 +21,6 @@ module.exports = {
     NOT_FOUND: 404,
     CONFLICT: 409,
     SOMETHING_WENT_WRONG: 412,
-    INTERNAL_SERVER_ERROR: 500,
-  },
+    INTERNAL_SERVER_ERROR: 500
+  }
 };
