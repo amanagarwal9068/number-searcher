@@ -3,8 +3,8 @@ const Media = require('../models/media');
 const workerValidator = require('../validators/worker');
 const { validateRequestInput } = require('../services/joi');
 const constants = require('../utils/constants');
-const Sequelize=require('sequelize')
-const sequelize=require('../services/sequelize')()
+const Sequelize = require('sequelize');
+const sequelize = require('../services/sequelize')();
 
 exports.add = async (req, res) => {
   try {
@@ -45,12 +45,12 @@ exports.list = async (req, res) => {
     };
     if (requestBody.name) {
       workersOpts.where.name = {
-        [Sequelize.Op.like]: `%${requestBody.name}%`
+        [Sequelize.Op.iLike]: `%${requestBody.name}%`
       };
     }
     if (requestBody.profession) {
       workersOpts.where.profession = {
-        [Sequelize.Op.like]: `%${requestBody.profession}%`
+        [Sequelize.Op.iLike]: `%${requestBody.profession}%`
       };
     }
     if (requestBody.hasOwnProperty('startRange')) {
